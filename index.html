@@ -47,31 +47,33 @@
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- fetch浏览器支持 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js" type="module"></script>
 <!-- 数据和展现分离 -->
 <script>
-  new Vue({
+  // view model 加上const
+  const vm = new Vue({
     el:'#app',
+    // 空数组
     data:{
-      categories:[
-        {
-        icon: './images/technology.png',
-        name: '技术',
-        tags: ['Java','PHP','NodeJs'],
-      },
-      {
-        icon: './images/technology.png',
-        name: '职位',
-        tags: ['Java','PHP','NodeJs'],
-      },
-      
-      {
-        icon: './images/technology.png',
-        name: '技术',
-        tags: ['Java','PHP','NodeJs'],
-      },
-      
-      
-    ]
+     categories:[]
+  },
+  // 从外部获取数据,传入上边
+  created:function(){
+    // this原本指的function上下文，捕获过来，赋给vue
+     const that = this 
+    // fetch或者axios异步请求
+    fetch('http://127.0.0.1:5500/api/index.json')
+    // 响应对象取json数据
+    .then(function(res){
+      return res.json()
+    // 真正 得到的数据
+    }).then(function(data){
+      // 给data赋值
+      // 第二种给data赋值方法
+      // vm.categories = data
+      that.categories = data
+    })
   }
 })
 </script>
