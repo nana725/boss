@@ -9,9 +9,10 @@
   <link rel="stylesheet" href="style/main.css">
   <link rel="shortcut icon" type="image/x-icon" href="./images/screen-icon.png">
 </head>
+
 <body>
   
-  <div class="container">
+  <div class="container" id="app">
     <!-- 头部 -->
     <div class="home-header">
       <img src="./images/home-search-text.png" alt="">
@@ -24,101 +25,19 @@
 
     <!-- 列表项 -->
     <div class="home-categories">
-    <dl>
-      <dt><img src="./images/technology.png" alt="">
-      <div>技术</div>
+    <dl v-for="item in categories">
+      <dt><img :src="item.icon" alt="">
+        <!-- 引入vue文件 new Vue 绑定id  引入数组对象  v-for修改 ：修改  双大括号修改 
+          src="./images/technology.png" 技术   v-for  --> 
+      <div>{{item.name}}</div>
       </dt>
       <dd>
-        <a href="" class="tag">Java</a>
-        <a href="" class="tag">PHP</a>
-        <a href="" class="tag">Web前端</a>
-        <a href="" class="tag">数据挖掘</a>
-        <a href="" class="tag">C++</a>
-        <a href="" class="tag">Python</a>
-        <a href="" class="tag">android</a>
-        <a href="" class="tag">iOS</a>
+        <a href="" class="tag" v-for="tag in item.tags">{{tag}}</a>
       </dd>
     </dl>
 
-    <dl>
-      <dt><img src="./images/technology.png" alt="">
-      <div>技术</div>
-      </dt>
-      <dd>
-        <a href="" class="tag">Java</a>
-        <a href="" class="tag">PHP</a>
-        <a href="" class="tag">Web前端</a>
-        <a href="" class="tag">数据挖掘</a>
-        <a href="" class="tag">C++</a>
-        <a href="" class="tag">Python</a>
-        <a href="" class="tag">android</a>
-        <a href="" class="tag">iOS</a>
-      </dd>
-    </dl>
-
-    <dl>
-      <dt><img src="./images/technology.png" alt="">
-      <div>技术</div>
-      </dt>
-      <dd>
-        <a href="" class="tag">Java</a>
-        <a href="" class="tag">PHP</a>
-        <a href="" class="tag">Web前端</a>
-        <a href="" class="tag">数据挖掘</a>
-        <a href="" class="tag">C++</a>
-        <a href="" class="tag">Python</a>
-        <a href="" class="tag">android</a>
-        <a href="" class="tag">iOS</a>
-      </dd>
-    </dl>
-
-    <dl>
-      <dt><img src="./images/technology.png" alt="">
-      <div>技术</div>
-      </dt>
-      <dd>
-        <a href="" class="tag">Java</a>
-        <a href="" class="tag">PHP</a>
-        <a href="" class="tag">Web前端</a>
-        <a href="" class="tag">数据挖掘</a>
-        <a href="" class="tag">C++</a>
-        <a href="" class="tag">Python</a>
-        <a href="" class="tag">android</a>
-        <a href="" class="tag">iOS</a>
-      </dd>
-    </dl>
-
-    <dl>
-      <dt><img src="./images/technology.png" alt="">
-      <div>技术</div>
-      </dt>
-      <dd>
-        <a href="" class="tag">Java</a>
-        <a href="" class="tag">PHP</a>
-        <a href="" class="tag">Web前端</a>
-        <a href="" class="tag">数据挖掘</a>
-        <a href="" class="tag">C++</a>
-        <a href="" class="tag">Python</a>
-        <a href="" class="tag">android</a>
-        <a href="" class="tag">iOS</a>
-      </dd>
-    </dl>
-
-    <dl>
-      <dt><img src="./images/technology.png" alt="">
-      <div>技术</div>
-      </dt>
-      <dd>
-        <a href="" class="tag">Java</a>
-        <a href="" class="tag">PHP</a>
-        <a href="" class="tag">Web前端</a>
-        <a href="" class="tag">数据挖掘</a>
-        <a href="" class="tag">C++</a>
-        <a href="" class="tag">Python</a>
-        <a href="" class="tag">android</a>
-        <a href="" class="tag">iOS</a>
-      </dd>
-    </dl>
+   
+    
   </div>
 
   <!-- 底部 -->
@@ -127,5 +46,34 @@
     <p>企业服务热线和举报投诉：400 065 5799</p>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 数据和展现分离 -->
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+      categories:[
+        {
+        icon: './images/technology.png',
+        name: '技术',
+        tags: ['Java','PHP','NodeJs'],
+      },
+      {
+        icon: './images/technology.png',
+        name: '职位',
+        tags: ['Java','PHP','NodeJs'],
+      },
+      
+      {
+        icon: './images/technology.png',
+        name: '技术',
+        tags: ['Java','PHP','NodeJs'],
+      },
+      
+      
+    ]
+  }
+})
+</script>
 </body>
 </html>
